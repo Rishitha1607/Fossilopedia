@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fossilopedia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Fossilopedia</a>
+        </div>
+    </nav>
+    
+        <div class="row" style="padding-top: 20px;">
+            <div class= "col-md-5 col-xs-6" id="slider" style="padding-left: 20px; max-height: 80vh;">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="images/F 7/1.jpg" class="d-block w-100">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="images/F 7/2.jpg" class="d-block w-100" >
+                      </div>
+                      <div class="carousel-item">
+                        <img src="images/F 7/3.jpg" class="d-block w-100" >
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+            <div class= "col-md-7 col-xs-6" style="padding-left: 20px;">
+                <h2 id="name"></h2>
+                <h4 id="Phylum"></h4>
+                <h4 id="Class"></h4>
+                <h4 id="Order"></h4>
+                <h4 id="Family"></h4>
+                <h4 id="Genus"></h4>
+                <h4 id="Species"></h4>
+            </div>
+        </div>
+        <div class="row" style="padding: 20px;">
+            <h4 id="head"></h4>
+            <p id="Morphology" style="font-size: medium;"></p>
+        </div>
+    <script>
+        document.getElementById("slider").style.display = "none";
+        fetch('https://script.googleusercontent.com/a/macros/iitgn.ac.in/echo?user_content_key=58SQ0p8N3SETf9q7uIXEYj6P5yzs3V93yUxkPANF4ZbT3K1h7GBYq-Ga6Z2uk8MymCA3YvYfC6J48tHl6_iba4upefq8EcL5m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_nRPgeZU6HP_pma4DHaPzHyPiHc-8WGXHXNF2uHBHNCOnJeO1g4z7NmhWjNMvODK6_1v28wi2ayOmO0fx3lZFgAoOUO4hW75EADpV9RWrzZjYNcEZv4hC12dW6KVn0dLWvJsw0wqpxiI&lib=M1wZaYVzH-S88wDc_tIE3p9-ogQrA5nHA')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.content[1][0]);
+                document.getElementById("name").innerHTML = data.content[7][1];
+                document.getElementById("Phylum").innerHTML = 'Phylum: '+data.content[7][2];
+                document.getElementById("Class").innerHTML = 'Class: '+data.content[7][3];
+                document.getElementById("Order").innerHTML = 'Order: '+data.content[7][4];
+                document.getElementById("Family").innerHTML = 'Family: '+data.content[7][5];
+                document.getElementById("Genus").innerHTML = 'Genus: '+data.content[7][6];
+                document.getElementById("Species").innerHTML = 'Species: '+data.content[7][7];
+                document.getElementById("Morphology").innerHTML =data.content[7][8];
+                document.getElementById("head").innerHTML = 'Morphology';
+                document.getElementById("slider").style.display = "block";
+            });
+    </script>
+</body>
+</html>
